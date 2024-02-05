@@ -26,20 +26,6 @@ app.use('/api/notes', notesRouter)
 const PORT = process.env.PORT || 8000
 
 // Connect mongo db database
-// mongoose
-//     .connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true })
-//     .then(() => {
-//         console.log('MongoDB Connected')
-//     })
-//     .catch((error) => {
-//         console.log(error)
-//         process.exit(1)
-//     })
-
-// app.listen(PORT, () => {
-//     console.log(`App is running on PORT: ${PORT}`)
-// })
-
 mongoose.set('strictQuery', false)
 const connectDb = async () => {
     try {
