@@ -23,14 +23,20 @@ router.post('/login', async (req, res) => {
 
 router.post('/register', async (req, res) => {
     try {
-        const user = new User({
-            name: req.body.name,
-            email: req.body.email,
-            password: req.body.password,
-        })
+        const checkUser = await User.findOne({ email: req.body.email })
+        if(checkUser) {
+            res.status(400).json({ message: "email already in use", status: false })
+        }
+        else {
+            const user = new User({
+                name: req.body.name,
+                email: req.body.email,
+                password: req.body.password,
+            })
 
-        const data = await user.save()
-        res.status(200).json(data)
+            const data = await user.save()
+            res.status(200).json(data)
+        }
     } catch (e) {
         res.status(500).json(e)
     }

@@ -1,9 +1,7 @@
 const router = require('express').Router()
 const Note = require('../models/Note')
 const User = require('../models/User')
-router.get('/heda', (req, res) => {
-    res.send('check check')
-})
+
 // Create note
 router.post('/addNote', async (req, res) => {
     try {
